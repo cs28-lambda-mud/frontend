@@ -3,8 +3,8 @@ import { AuthContext } from '../../App'
 
 export default function Home() {
     return (
-        <AuthContext.Consumer>
-            {value => <div>{value.user}</div>}
-        </AuthContext.Consumer>        
+        <>
+           <h1>HELLO, ITS WORKING</h1>
+        </>
     )
 }
