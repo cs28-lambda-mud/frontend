@@ -1,9 +1,10 @@
 import React from 'react'
+import { AuthContext } from '../../App'
 
 export default function Home() {
     return (
-        <div>
-            <h1>ITS WORKING!!!!!!</h1>
-        </div>
+        <AuthContext.Consumer>
+            {value => <div>{value.user}</div>}
+        </AuthContext.Consumer>        
     )
 }
