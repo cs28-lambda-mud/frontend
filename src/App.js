@@ -18,8 +18,8 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type){
     case "LOGIN":
-    localStorage.setItem('user', JSON.stringify(action.payload.user));
-    localStorage.setItem('token', JSON.stringify(action.payload.token));
+    window.localStorage.setItem('user', JSON.stringify(action.payload.user));
+    window.localStorage.setItem('token', JSON.stringify(action.payload.key));
     return {
       ...state,
       isAuthenticated: true,
@@ -27,8 +27,8 @@ const reducer = (state, action) => {
       token: action.payload.token
     };
     case "REGISTER":
-      localStorage.setItem('user', JSON.stringify(action.payload.user))
-      localStorage.setItem('token', JSON.stringify(action.payload.token));
+      window.localStorage.setItem('user', JSON.stringify(action.payload.user))
+      window.localStorage.setItem('token', JSON.stringify(action.payload.token));
       return {
         ...state,
         isAuthenticated: true,

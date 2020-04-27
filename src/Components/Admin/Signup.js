@@ -32,7 +32,8 @@ export default function Signup() {
             },
             body: JSON.stringify({
                 username: newCreds.username,
-                password: newCreds.password
+                password1: newCreds.password,
+                password2: newCreds.password
             })
         })
         .then(res => {
