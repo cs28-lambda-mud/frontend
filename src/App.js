@@ -13,7 +13,6 @@ const initialState = {
 }
 
 // REDUCER FOR LOGIN/LOGOUT
-
 const reducer = (state, action) => {
   switch (action.type){
     case "LOGIN":
