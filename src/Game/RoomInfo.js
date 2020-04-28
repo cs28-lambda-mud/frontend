@@ -6,8 +6,8 @@ import {axiosWithAuth} from '../Components/Utils/AxiosWithAuth'
 
 export default function RoomInfo() {
 
-    const { user, setUser } = useContext(UserContext)
-    const { players, setPlayers } = useContext(PlayerContext)
+    const { user, setUser } = React.useContext(UserContext)
+    const { players, setPlayers } = React.useContext(PlayerContext)
 
     const [info, setInfo] = React.useState(false)
 
@@ -22,7 +22,7 @@ export default function RoomInfo() {
         .catch(err => {
             setInfo(`${err}`)
         })
-    })
+    }, [user, players])
 
     return (
         <div>

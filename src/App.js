@@ -26,8 +26,8 @@ const [players, setPlayers] = React.useState([])
 
   return (
   <div className="App">
-    <UserContext.Provider value={user, setUser}>
-      <PlayerContext.Provider value={players, setPlayers}>
+    <UserContext.Provider value={{user, setUser}}>
+      <PlayerContext.Provider value={{players, setPlayers}}>
         <Switch>
           <Route exact path='/' component={Home} />
           <Route path='/register' component={Signup} />
