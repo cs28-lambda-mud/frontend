@@ -2,6 +2,7 @@ import React from 'react'
 
 import { UserContext } from '../Components/Contexts/UserContext'
 import { PlayerContext } from '../Components/Contexts/PlayerContext'
+import {axiosWithAuth} from '../Components/Utils/AxiosWithAuth'
 
 export default function RoomInfo() {
 
