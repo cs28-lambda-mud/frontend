@@ -32,8 +32,8 @@ const [players, setPlayers] = React.useState([])
         <Labelbar />
         <Switch>
           <PrivateRoute exact path='/play' component={PlayGame} />
-          <Route exact path='/' component={Signup} />
-          <Route path='/login' component={Login} />      
+          <Route exact path='/' component={Login} />
+          <Route path='/signup' component={Signup} />      
         </Switch>
       </PlayerContext.Provider>
     </UserContext.Provider>
