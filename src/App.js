@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {usere} from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -32,7 +32,7 @@ const [players, setPlayers] = React.useState([])
           <Route exact path='/' component={Home} />
           <Route path='/register' component={Signup} />
           <Route path='/login' component={Login} />
-          {/* <Route path='/play' exact component={PlayGame} /> */}
+          <Route path='/play' exact component={PlayGame} />
       
         </Switch>
       </PlayerContext.Provider>
