@@ -1,61 +1,41 @@
 import React from 'react'
-import {AuthContext} from '../../App'
+import axios from 'axios'
+
+import { useHistory } from 'react-router-dom';
+
+
 
 export default function Signup() {
-    const {dispatch} = React.useContext(AuthContext)
-    const initialState = {
-        username: '',
-        password: '',
-        isSubmitting: false
-    }
+    const history = useHistory()
 
-    const [newCreds, setNewCreds] = React.useState(initialState)
+    const [submitting, setSubmitting] = React.useState(false)
+    const [update, setUpdate] = React.useState({username: '', password1: '', password2: ''})
 
     const handleChange = e => {
-        setNewCreds({
-            ...newCreds,
+        setUpdate({
+            ...update,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    const handleSubmit = () => {
         console.log('clicked')
-        setNewCreds({
-            ...newCreds,
-            isSubmitting: true
-        });
-        fetch('https://lambda-mud-test.herokuapp.com/api/registration/', {
-            method: 'post',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify({
-                username: newCreds.username,
-                password1: newCreds.password,
-                password2: newCreds.password
-            })
-        })
+        
+        axios.post('https://lambda-mud-test.herokuapp.com/api/registration/', update)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            throw res;
-        })
-        .then(resJson => {
-            dispatch({
-                type: 'REGISTER',
-                payload: resJson
-            })
+            localStorage.setItem('token', res.data.key)
+            setSubmitting('Success')
+            history.push('/')
         })
         .catch(err => {
-            console.log(err)
-            setNewCreds({
-                ...newCreds,
-                isSubmitting: false
-            })
+            console.log(err);
+            setSubmitting(`${err}`)
         })
     }
+        
+       
+        
+    
     return (
         <div>
             <h2>Signup to see and save our game!</h2>
@@ -65,15 +45,23 @@ export default function Signup() {
                     <input
                         type='username'
                         name='username'
-                        value={newCreds.username}
+                        value={update.username}
                         onChange={handleChange}
                         />
                     </label>
                     <label> Password
                     <input
                         type='password'
-                        name='password'
-                        value={newCreds.password}
+                        name='password1'
+                        value={update.password1}
+                        onChange={handleChange}
+                        />
+                    </label>
+                    <label> Repeat password
+                    <input
+                        type='password'
+                        name='password2'
+                        value={update.password2}
                         onChange={handleChange}
                         />
                     </label>

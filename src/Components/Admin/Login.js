@@ -1,61 +1,39 @@
-import React from 'react'
-import { AuthContext } from '../../App'
+import React from 'react';
+
+import axios from 'axios';
+import { useHistory } from 'react-router-dom'
+
 
 export default function Login() {
-    const { dispatch } = React.useContext(AuthContext);
-    const initialState = {
-        username: '',
-        password: '',
-        isSubmitting: false
-    };
 
-    const [creds, setCreds] = React.useState(initialState)
+    const history = useHistory()
+
+    const [changes, setChanges] = React.useState({ username: '', password: ''})
+    const [ isSubmitting, setIsSubmitting] = React.useState('')
+    
 
     const handleInputChange = e => {
-        setCreds({
-            ...creds,
+        setChanges({
+            ...changes,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = e => {
-        e.preventDefault()
+    const handleSubmit = () => {
         console.log('clicked')
-        setCreds({
-            ...creds,
-            isSubmitting: true
-        });
-        fetch('https://lambda-mud-test.herokuapp.com/api/login/', {
-            method: 'post',
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify({
-                username: creds.username,
-                password: creds.password
-            })
-        })
+
+        axios.post('https://lambda-mud-test.herokuapp.com/api/login/', changes)
         .then(res => {
-            if (res.ok) {
-                return res.json();
-            }
-            throw res;
+            localStorage.setItem('token', res.data.key)
+            setIsSubmitting('Success')
+            history.push('/')
         })
-        .then(resJson => {
-            console.log(resJson)
-            dispatch({
-                type: "LOGIN",
-                payload: resJson
-            })
+        .catch(err => {
+            console.log(err);
+            setIsSubmitting(`${err}`)
         })
-        .catch(error => {
-            setCreds({
-                ...creds,
-                isSubmitting: false
-            })
-            console.log(error)
-        });
     }
+        
 
 
     return (
@@ -67,7 +45,7 @@ export default function Login() {
                     <input
                         type='username'
                         name='username'
-                        value={creds.username}
+                        value={changes.username}
                         onChange={handleInputChange}
                         />
                     </label>
@@ -75,7 +53,7 @@ export default function Login() {
                     <input
                         type='password'
                         name='password'
-                        value={creds.password}
+                        value={changes.password}
                         onChange={handleInputChange}
                         />
                     </label>
@@ -85,5 +63,3 @@ export default function Login() {
         </div>
     )
 }
-
-
