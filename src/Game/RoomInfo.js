@@ -12,24 +12,28 @@ export default function RoomInfo() {
     const [info, setInfo] = React.useState(false)
 
     React.useEffect(() => {
-        axiosWithAuth()
-        .get('https://lambda-mud-test.herokuapp.com/api/adv/init/')
+        setInfo(true)   
+     axiosWithAuth()
+        .get('https://lambda-mud-test.herokuapp.com/api/adv/init')
         .then(res => {
             setUser({...user, name: res.data.name, title: res.data.title, description: res.data.description, room_id: res.data.room_id})
             setPlayers(res.data.players)
-            setInfo(true)
+            console.log(res)
         })
         .catch(err => {
-            setInfo(`${err}`)
+            setInfo(false)
+            console.log(err)
         })
     }, [user, players])
 
+
     return (
         <div>
-            <h1>User: {user.name}</h1>
+            {info === true ? <div><h1>User: {user.name}}</h1>
             <h1>Room: {user.title}</h1>
             <h1>Description: {user.description}</h1>
-            <h1>Room ID: {user.room_id}</h1>
+            <h1>Room ID: {user.room_id}</h1></div> : <h1>'UNKNOWN'</h1>}
+            
         </div>
     )
-}
+    }

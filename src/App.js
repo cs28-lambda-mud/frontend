@@ -1,16 +1,17 @@
-import React, {usere} from 'react';
+import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
+import Labelbar from './Components/Labelbar'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Home from './Components/Views/Home';
-import Login from './Components/Admin/Login';
-import Signup from './Components/Admin/Signup';
-import Nav from './Components/Labelbar'
+import PrivateRoute from './Components/Utils/PrivateRoute'
+
 import PlayGame from './Game/PlayGame'
 // CONTEXTS
 import { UserContext } from './Components/Contexts/UserContext';
 import { PlayerContext } from './Components/Contexts/PlayerContext';
+import Admin from './Components/Admin/Admin';
 
 function App() {
 
@@ -28,12 +29,12 @@ const [players, setPlayers] = React.useState([])
   <div className="App">
     <UserContext.Provider value={{user, setUser}}>
       <PlayerContext.Provider value={{players, setPlayers}}>
+        <Labelbar />
         <Switch>
-          <Route exact path='/' component={Home} />
-          <Route path='/register' component={Signup} />
-          <Route path='/login' component={Login} />
-          <Route path='/play' exact component={PlayGame} />
-      
+          <PrivateRoute exact path='/play' component={PlayGame} />
+          {/* <Route exact path='/' component={Login} /> */}
+          {/* <Route path='/signup' component={Signup} />       */}
+          <Route path='/' component={Admin} />
         </Switch>
       </PlayerContext.Provider>
     </UserContext.Provider>
