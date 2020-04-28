@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.css';
 import { Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './Components/Views/Home';
 import Login from './Components/Admin/Login';
 import Signup from './Components/Admin/Signup';
-
+import Nav from './Components/Labelbar'
 // CONTEXTS
 import { UserContext } from './Components/Contexts/UserContext';
 import { PlayerContext } from './Components/Contexts/PlayerContext';
