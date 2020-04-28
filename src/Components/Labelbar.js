@@ -7,15 +7,12 @@ export default function LabelBar() {
   return (
       <>
    <NavBar bg='dark' expand='lg'>
-    <NavBar.Brand href='/'>GAME NAME</NavBar.Brand>
+    <NavBar.Brand href='/' style={{color: 'white'}}>GAME NAME</NavBar.Brand>
     <NavBar.Toggle aria-controls='basic-navbar-nav' />
     <NavBar.Collapse id='basic-navbar-nav'>
         <Nav className='mx-auto'>
-            {localStorage.token && <Nav.Link href='/'> HOME </Nav.Link>}
-            {localStorage.token && <Nav.Link href='/login'> LOGIN </Nav.Link>}
-            {localStorage.token && <Nav.Link href='/register'> REGISTER </Nav.Link>}
-            {localStorage.token && <Nav.Link href='/play'> PlAY </Nav.Link>}
-
+            {localStorage.token && <Nav.Link href='/login' style={{color: 'white'}}> LOGIN/Register </Nav.Link>}
+            {localStorage.token && <Nav.Link href='/play'  style={{color: 'white'}}> PLAY </Nav.Link>}
         </Nav>
     </NavBar.Collapse>
    </NavBar>

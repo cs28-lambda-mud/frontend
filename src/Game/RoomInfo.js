@@ -24,7 +24,7 @@ export default function RoomInfo() {
             setInfo(false)
             console.log(err)
         })
-    }, [setPlayers, setUser, user])
+    }, [])
 
     return (
         <div>
