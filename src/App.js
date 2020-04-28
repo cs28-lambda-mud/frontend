@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './Components/Views/Home'
 import Login from './Components/Admin/Login';
 import Signup from './Components/Admin/Signup';
-
+import Nav from './Components/Labelbar'
 // CONTEXTS
 export const AuthContext = React.createContext();
 const initialState = {
@@ -54,6 +55,7 @@ function App() {
     <AuthContext.Provider
       value={{state, dispatch}}>
       <div className="App">
+        <Nav />
         {!state.isAuthenticated ? <Signup /> : <Home />}
       </div>
     </AuthContext.Provider>
