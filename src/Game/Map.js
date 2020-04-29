@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from "react";
 import { axiosWithAuth } from "../Components/Utils/AxiosWithAuth";
-import { Card } from "reactstrap";
 import Room from "./DrawRoom";
+import { Container, Row, Col } from "reactstrap";
+import '../index.css';
 
 function Map() {
 	const [currentRoom, setCurrentRoom] = useState(null)
@@ -27,11 +28,6 @@ function Map() {
 	}, [rooms, setRooms])
 
 	useEffect(() => {
-		setCanvas(canvasRef.current);
-		resizeCanvas()
-	}, [canvasRef])
-
-	useEffect(() => {
 		if ( rooms != null ) {
 			// ctx = canvasRef.current.getContext('2d');
 			// ctx.clearRect(0, 0, 400, 400)
@@ -49,6 +45,7 @@ function Map() {
 		rooms.map(room => {
 			let roomFields = room.fields
 			console.log(roomFields)
+			console.log(canvas_width, canvas_height)
 			let r = new Room(room.pk, 
 					roomFields.title,
 					roomFields.description, 
@@ -61,13 +58,6 @@ function Map() {
 			return r.draw(ctx)
 		})
 	}
-
-	function resizeCanvas() {
-		if ( canvas ) {
-			canvas.width = canvas.current.clientWidth
-			canvas.height = canvas.current.clientHeight
-		}
-	}
 	// function gameLoop(timestamp) {
 	// 	let deltaTime = timestamp - lastTime;
 	// 	lastTime = timestamp
@@ -79,9 +69,13 @@ function Map() {
 	// }
 
 	return (
-		<Card>
-			<canvas ref={canvasRef} height="400"/>
-		</Card>
+		<Container>
+			<Row>
+				<Col>
+				<canvas ref={canvasRef} className="canvas" />
+				</Col>
+			</Row>
+		</Container>
 	)
 }
 
