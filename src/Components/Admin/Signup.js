@@ -43,7 +43,7 @@ export default function Signup() {
                 <form style={{display: 'flex', flexDirection: 'column'}}>
                     <label > Username
                     <input
-                        style={{marginLeft: '2.4rem'}}
+                        style={{marginLeft: '5px'}}
                         type='username'
                         name='username'
                         value={update.username}
@@ -52,7 +52,7 @@ export default function Signup() {
                     </label>
                     <label> Password
                     <input
-                        style={{marginLeft: '3rem'}}
+                        style={{marginLeft: '5px'}}
                         type='password'
                         name='password1'
                         value={update.password1}
@@ -61,7 +61,7 @@ export default function Signup() {
                     </label>
                     <label> Password
                     <input
-                        style={{marginLeft: '3rem'}}
+                        style={{marginLeft: '5px'}}
                         type='password'
                         name='password2'
                         value={update.password2}
@@ -69,7 +69,7 @@ export default function Signup() {
                         />
                     </label>
                 </form>
-                <button onClick={handleSubmit}>Submit</button>
+                <button  style={{marginTop: '15px', marginLeft:'5px'}} onClick={handleSubmit}>Submit</button>
             </div>
         </div>
     )

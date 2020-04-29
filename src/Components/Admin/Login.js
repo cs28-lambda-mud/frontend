@@ -44,7 +44,7 @@ export default function Login() {
                 <form style={{display: 'flex', flexDirection: 'column'}}>
                     <label> Username
                     <input
-                        style={{marginLeft: '20px'}}
+                        style={{marginLeft: '5px'}}
                         type='username'
                         name='username'
                         value={changes.username}
@@ -53,7 +53,7 @@ export default function Login() {
                     </label>
                     <label> Password
                     <input
-                        style={{marginLeft: '30px'}}
+                        style={{marginLeft: '5px'}}
                         type='password'
                         name='password'
                         value={changes.password}
@@ -61,7 +61,7 @@ export default function Login() {
                         />
                     </label>
                 </form>
-                <button onClick={handleSubmit}>Submit</button>
+                <button style={{marginTop: '15px', marginLeft:'5px'}}onClick={handleSubmit}>Submit</button>
             </div>
         </div>
     )
