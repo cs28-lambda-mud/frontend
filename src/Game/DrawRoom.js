@@ -17,26 +17,26 @@ class Room {
 	}
 
 	draw(ctx) {
-		ctx.fillStyle = 'orange'
+		ctx.fillStyle = 'orange';
 		ctx.fillRect(this.x, this.y, this.width, this.height)
 
 		if (this.n_to == true) {
-			ctx.fillStyle = 'blue'
+			ctx.fillStyle = 'orange';
 			ctx.fillRect(this.x + 12, this.y - 50, (this.width - 30) / 2, this.height)
 		}
 
 		if (this.e_to == true) {
-			ctx.fillStyle = 'gray'
+			ctx.fillStyle = 'orange';
 			ctx.fillRect(this.x + 20, this.y + 20, this.width, (this.height - 15) / 2)
 		}
 
 		if (this.s_to == true) {
-			ctx.fillStyle = 'green'
+			ctx.fillStyle = 'orange';
 			ctx.fillRect(this.x + 12, this.y + 50, (this.width - 30) / 2, this.height)
 		}
 
 		if (this.w_to == true) {
-			ctx.fillStyle = 'lightblue'
+			ctx.fillStyle = 'orange';
 			ctx.fillRect(this.x - 20, this.y + 20, this.width, (this.height - 15) / 2)
 		}
 	}
