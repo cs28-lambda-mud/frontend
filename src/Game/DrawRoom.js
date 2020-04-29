@@ -1,7 +1,7 @@
 class Room {
 	constructor(id, title, description, north=0, south=0, east=0, west=0, x, y) {
-		this.width = 18
-		this.height = 50
+		this.width = 40
+		this.height = 20
 
 		this.id = id
 		this.title = title
@@ -17,7 +17,7 @@ class Room {
 	}
 
 	draw(ctx) {
-		ctx.fillStyle = 'orange';
+		ctx.fillStyle = 'green';
 		ctx.fillRect(this.x, this.y, this.width, this.height)
 	}
 
