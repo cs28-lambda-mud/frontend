@@ -65,8 +65,8 @@ function Map() {
 	// 	room.update(deltaTime)
 	// 	room.draw(ctx)
 
-	// 	requestAnimationFrame(gameLoop);
-	// }
+// 	// 	requestAnimationFrame(gameLoop);
+// 	// }
 
 	return (
 		<Container>
@@ -79,4 +79,4 @@ function Map() {
 	)
 }
 
-export default Map;
+// export default Map;

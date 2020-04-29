@@ -1,4 +1,5 @@
 import React from 'react';
+import './Login.css'
 
 import axios from 'axios';
 import { useHistory } from 'react-router-dom'
@@ -37,20 +38,22 @@ export default function Login() {
 
 
     return (
-        <div>
+        <div className='login'>
             <h2>Login to see and save our game!</h2>
             <div>
-                <form>
+                <form style={{display: 'flex', flexDirection: 'column'}}>
                     <label> Username
                     <input
+                        style={{marginLeft: '20px'}}
                         type='username'
                         name='username'
                         value={changes.username}
                         onChange={handleInputChange}
-                        />
+                        /><br />
                     </label>
                     <label> Password
                     <input
+                        style={{marginLeft: '30px'}}
                         type='password'
                         name='password'
                         value={changes.password}

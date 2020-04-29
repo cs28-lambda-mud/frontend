@@ -6,7 +6,7 @@ const PlayGame = () => {
     return(
         <div>
             <RoomInfo />
-            <Map />
+            {/* <Map /> */}
         </div>
     )
 }
