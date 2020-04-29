@@ -10,7 +10,7 @@ import Signup from './Signup'
 export default function Admin() {
     return (
         <div>
-            <Container>
+            <Container fluid='sm' style={{backgroundColor: 'grey', borderRadius: '25px', marginTop: '30px'}}>
             <Tabs defaultActiveKey='Login' transition={false} id='noanim-tab-example'>
                 <Tab eventKey='Login' title='Login'>
                     <Login />

@@ -1,0 +1,13 @@
+.login{
+    color: black;
+    outline: white;
+    font-size: 30px;
+    font-weight: 100;
+    /* text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; */
+    
+}
+
+.login.h2{
+    font-size: 20px;
+
+}

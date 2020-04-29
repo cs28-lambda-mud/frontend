@@ -6,7 +6,7 @@ import './LabelBar.css'
 export default function LabelBar() {
   return (
       <>
-   <NavBar bg='dark' expand='lg'>
+   <NavBar style={{backgroundColor: '#b81c2a'}} expand='lg'>
     <NavBar.Brand href='/' style={{color: 'white'}}>GAME NAME</NavBar.Brand>
     <NavBar.Toggle aria-controls='basic-navbar-nav' />
     <NavBar.Collapse id='basic-navbar-nav'>
