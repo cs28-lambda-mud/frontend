@@ -1,5 +1,5 @@
 import React from 'react'
-import { AuthContext } from '../../App'
+
 
 export default function Home() {
     return (

@@ -26,7 +26,7 @@ export default function Login() {
         .then(res => {
             localStorage.setItem('token', res.data.key)
             setIsSubmitting('Success')
-            history.push('/')
+            history.push('/play')
         })
         .catch(err => {
             console.log(err);
