@@ -6,6 +6,8 @@ class Player {
 		self.x = x
 		self.y = y
 	}
+
+	draw(ctx){}
 }
 
 export default Player
