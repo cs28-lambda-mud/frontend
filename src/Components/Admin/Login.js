@@ -41,9 +41,10 @@ export default function Login() {
         <div className='login'>
             <h2>Login to see and save our game!</h2>
             <div>
-                <form>
+                <form style={{display: 'flex', flexDirection: 'column'}}>
                     <label> Username
                     <input
+                        style={{marginLeft: '20px'}}
                         type='username'
                         name='username'
                         value={changes.username}
@@ -52,6 +53,7 @@ export default function Login() {
                     </label>
                     <label> Password
                     <input
+                        style={{marginLeft: '30px'}}
                         type='password'
                         name='password'
                         value={changes.password}

@@ -11,8 +11,8 @@ export default function LabelBar() {
     <NavBar.Toggle aria-controls='basic-navbar-nav' />
     <NavBar.Collapse id='basic-navbar-nav'>
         <Nav className='mx-auto'>
-            {localStorage.token && <Nav.Link href='/login' style={{color: 'white'}}> LOGIN/Register </Nav.Link>}
-            {localStorage.token && <Nav.Link href='/play'  style={{color: 'white'}}> PLAY </Nav.Link>}
+            {localStorage.token && <Nav.Link href='/login' style={{color: 'white'}}> Login/Register </Nav.Link>}
+            {localStorage.token && <Nav.Link href='/play'  style={{color: 'white'}}> Play </Nav.Link>}
         </Nav>
     </NavBar.Collapse>
    </NavBar>

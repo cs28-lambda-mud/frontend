@@ -37,12 +37,13 @@ export default function Signup() {
         
     
     return (
-        <div>
-            <h2>Signup to see and save our game!</h2>
+        <div style={{color: 'black', outline: 'white', fontSize: '30px', fontWeight: '100'}}>
+            <h2 style={{fontSize: '2rem'}}>Signup to see and save our game!</h2>
             <div>
-                <form>
-                    <label> Username
+                <form style={{display: 'flex', flexDirection: 'column'}}>
+                    <label > Username
                     <input
+                        style={{marginLeft: '2.4rem'}}
                         type='username'
                         name='username'
                         value={update.username}
@@ -51,14 +52,16 @@ export default function Signup() {
                     </label>
                     <label> Password
                     <input
+                        style={{marginLeft: '3rem'}}
                         type='password'
                         name='password1'
                         value={update.password1}
                         onChange={handleChange}
                         />
                     </label>
-                    <label> Repeat password
+                    <label> Password
                     <input
+                        style={{marginLeft: '3rem'}}
                         type='password'
                         name='password2'
                         value={update.password2}
