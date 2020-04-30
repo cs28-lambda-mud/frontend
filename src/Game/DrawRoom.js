@@ -17,13 +17,18 @@ class Room {
 	}
 
 	draw(ctx, current_room) {
-		ctx.fillStyle = 'purple';
+		ctx.fillStyle = 'green';
 		let isCurrentRoom = this.title === current_room ? true : false
 		ctx.fillRect(this.x, this.y, this.width, this.height)
+
 		if (isCurrentRoom) {
-			ctx.fillStyle = 'yellow';
+			ctx.fillStyle = 'blue';
 			ctx.fillRect(this.x, this.y, this.width, this.height)
 		}
+
+		ctx.font = '15px Arial';
+		ctx.fillStyle = 'white';
+		ctx.fillText(this.id, this.x + 25, this.y + 15)
 	}
 
 	// update(deltaTime) {

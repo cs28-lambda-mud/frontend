@@ -16,7 +16,7 @@ function Map() {
 	useEffect(() => {
 		if ( rooms == null ) {
 			axiosWithAuth()
-				.get("https://lambda-mud-test.herokuapp.com/api/adv/rooms/")
+				.get("https://cs28mud.herokuapp.com/api/adv/rooms/")
 				.then(res => {
 					const json = res.data.rooms
 					const object = JSON.parse(json)
@@ -30,9 +30,6 @@ function Map() {
 
 	useEffect(() => {
 		if ( rooms != null ) {
-			// ctx = canvasRef.current.getContext('2d');
-			// ctx.clearRect(0, 0, 400, 400)
-			// room.draw(ctx)
 			drawRooms(rooms)
 		}
 	}, [drawRooms]);
@@ -42,13 +39,14 @@ function Map() {
 		ctx.clearRect(0, 0, 400, 400)
 		let canvas_width = ctx.canvas.clientWidth
 		let canvas_height = ctx.canvas.clientHeight
-		let start_x = 100
-		let start_y = 100
+		let start_x = (canvas_width) / 2 - 40
+		let start_y = (canvas_height / 2) - 40
+
+		console.log(rooms)
+
 		rooms.map(room => {
 			let roomFields = room.fields
 			console.log('room', room)
-			console.log(roomFields)
-			console.log(canvas_width, canvas_height)
 			let r = new Room(room.pk, 
 					roomFields.title,
 					roomFields.description, 

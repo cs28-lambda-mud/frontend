@@ -15,7 +15,7 @@ export default function RoomInfo() {
         if (info === false) {
             setInfo(true)  
             axiosWithAuth()
-                .get('https://lambda-mud-test.herokuapp.com/api/adv/init')
+                .get('https://cs28mud.herokuapp.com/api/adv/init')
                 .then(res => {
                     setUser(
                         {
