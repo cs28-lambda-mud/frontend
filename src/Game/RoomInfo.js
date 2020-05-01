@@ -41,7 +41,7 @@ export default function RoomInfo() {
             {info === true ? <div><h1>User: {user.name}</h1>
             <h1>Room: {user.title}</h1>
             <h1>Description: {user.description}</h1>
-            <h1>Room ID: {user.room_id}</h1></div> : <h1>'UNKNOWN'</h1>}
+            </div> : <h1>'UNKNOWN'</h1>}
         </div>
     )
     }
