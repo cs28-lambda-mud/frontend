@@ -1,7 +1,7 @@
 class Room {
 	constructor(id, title, description, north=0, south=0, east=0, west=0, x, y) {
-		this.width = 40
-		this.height = 20
+		this.width = 24
+		this.height = 24
 
 		this.id = id
 		this.title = title
@@ -12,13 +12,23 @@ class Room {
 		this.e_to = east
 		this.w_to = west
 
-		this.x = x
-		this.y = y
+		this.x = x * this.width * 1.25
+		this.y = y * this.height * 1.25
 	}
 
-	draw(ctx) {
+	draw(ctx, current_room) {
 		ctx.fillStyle = 'green';
+		let isCurrentRoom = this.id === current_room ? true : false
 		ctx.fillRect(this.x, this.y, this.width, this.height)
+
+		if (isCurrentRoom) {
+			ctx.fillStyle = 'blue';
+			ctx.fillRect(this.x, this.y, this.width, this.height)
+		}
+
+		ctx.font = '10px Arial';
+		ctx.fillStyle = 'white';
+		ctx.fillText(this.id, this.x, this.y+10)
 	}
 
 	// update(deltaTime) {

@@ -21,7 +21,7 @@ export default function Signup() {
     const handleSubmit = () => {
         console.log('clicked')
         
-        axios.post('https://lambda-mud-test.herokuapp.com/api/registration/', update)
+        axios.post('https://cs28mud.herokuapp.com/api/registration/', update)
         .then(res => {
             localStorage.setItem('token', res.data.key)
             setSubmitting('Success')

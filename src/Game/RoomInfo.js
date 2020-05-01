@@ -15,16 +15,18 @@ export default function RoomInfo() {
         if (info === false) {
             setInfo(true)  
             axiosWithAuth()
-                .get('https://lambda-mud-test.herokuapp.com/api/adv/init')
+                .get('/adv/init/')
                 .then(res => {
+                    console.log(res.data)
                     setUser(
                         {
                             ...user, 
                             name: res.data.name, 
                             title: res.data.title, 
                             description: res.data.description, 
-                            room_id: res.data.room_id}
-                        )
+                            room_id: res.data.room_id
+                        }
+                    )
                 setPlayers(res.data.players)
                 console.log(res)
             })
@@ -41,7 +43,7 @@ export default function RoomInfo() {
             {info === true ? <div><h1>User: {user.name}</h1>
             <h1>Room: {user.title}</h1>
             <h1>Description: {user.description}</h1>
-            <h1>Room ID: {user.room_id}</h1></div> : <h1>'UNKNOWN'</h1>}
+            </div> : <h1>'UNKNOWN'</h1>}
         </div>
     )
     }

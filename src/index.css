@@ -54,8 +54,8 @@ body{
 }
 
 .canvas {
-	width: 400px;
-	height: 400px;
+	width: 720px;
+	height: 480px;
 	border: 1px solid black;
 	background: white;
 }
