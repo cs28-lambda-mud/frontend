@@ -108,7 +108,7 @@ function Map() {
 		<Container>
 			<Row>
 				<Col>
-				<canvas ref={canvasRef} width="720" height="480" className="canvas" />
+				<canvas ref={canvasRef} width="1600" height="1600" className="canvas" />
 				</Col>
 			</Row>
 		</Container>
