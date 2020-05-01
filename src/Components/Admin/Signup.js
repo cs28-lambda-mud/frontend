@@ -25,10 +25,10 @@ export default function Signup() {
         .then(res => {
             localStorage.setItem('token', res.data.key)
             setSubmitting('Success')
-            history.push('/')
+            history.push('/play')
         })
         .catch(err => {
-            console.log(err);
+            console.log(err.response);
             setSubmitting(`${err}`)
         })
     }
