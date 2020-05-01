@@ -43,7 +43,7 @@ export default function Signup() {
                 <form style={{display: 'flex', flexDirection: 'column'}}>
                     <label > Username
                     <input
-                        style={{marginLeft: '2.4rem'}}
+                        style={{marginLeft: '2.8rem'}}
                         type='username'
                         name='username'
                         value={update.username}
