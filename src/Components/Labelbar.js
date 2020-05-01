@@ -7,7 +7,7 @@ export default function LabelBar() {
   return (
       <>
    <NavBar style={{backgroundColor: '#b81c2a'}} expand='lg'>
-    <NavBar.Brand href='/' style={{color: 'white'}}>GAME NAME</NavBar.Brand>
+    <NavBar.Brand href='/' style={{color: 'white'}}>SmurfsVille</NavBar.Brand>
     <NavBar.Toggle aria-controls='basic-navbar-nav' />
     <NavBar.Collapse id='basic-navbar-nav'>
         <Nav className='mx-auto'>
