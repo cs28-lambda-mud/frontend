@@ -28,7 +28,7 @@ export default function Signup() {
             history.push('/play')
         })
         .catch(err => {
-            console.log(err.response);
+            console.log(err.response.statusText);
             setSubmitting(`${err}`)
         })
     }
