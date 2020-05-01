@@ -20,7 +20,7 @@ function Map() {
 	useEffect(() => {
 		if ( rooms == null ) {
 			axiosWithAuth()
-				.get("https://cs28mud.herokuapp.com/api/adv/rooms/")
+				.get("https://cs28mudprod.herokuapp.com/api/adv/rooms/")
 				.then(res => {
 					const rooms = res.data.grid
 					setRooms(rooms)
@@ -78,8 +78,6 @@ function Map() {
 		let canvas_width = ctx.canvas.clientWidth
 		let canvas_height = ctx.canvas.clientHeight
 
-		console.log(rooms)
-
 		rooms.forEach(room => {
 			let r = new Room(room.id, 
 					room.title,
@@ -90,6 +88,7 @@ function Map() {
 					room.w_to,
 					room.x, room.y
 			)
+
 			isCurrent = user.room_id === room.id
 			r.draw(ctx, isCurrent)
 		})

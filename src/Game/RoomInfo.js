@@ -24,7 +24,7 @@ export default function RoomInfo() {
                             name: res.data.name, 
                             title: res.data.title, 
                             description: res.data.description, 
-                            room_id: res.data.room_id === 1 ? 26 : res.data.room_id
+                            room_id: res.data.room_id
                         })
                 setPlayers(res.data.players)
             })
