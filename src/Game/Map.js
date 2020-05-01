@@ -42,7 +42,7 @@ function Map() {
 	useEffect(() => {
 		window.addEventListener("keydown", handler)
 		return ( () => { return window.removeEventListener("keydown", handler) })
-	}, [handler])
+	}, [handler, rooms])
 
     function handler({ key }) {
         let move = new Controls(key)
