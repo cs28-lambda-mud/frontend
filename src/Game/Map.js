@@ -3,13 +3,17 @@ import { axiosWithAuth } from "../Components/Utils/AxiosWithAuth";
 import Room from "./DrawRoom";
 import { Container, Row, Col } from "reactstrap";
 import { UserContext } from "../Components/Contexts/UserContext";
+import { PlayerContext } from "../Components/Contexts/PlayerContext";
 import '../index.css';
+import useEventListener from '@use-it/event-listener';
+import Controls from "./Controls";
 
 function Map() {
 	const [currentRoom, setCurrentRoom] = useState(null)
 	const [isFetching, setIsFetching] = useState(null)
 	const [rooms, setRooms] = useState(null)
 	const { user, setUser } = useContext(UserContext)
+	const { players, setPlayers } = useContext(PlayerContext)
 	let canvasRef = useRef(null)
 	let ctx;
 
@@ -18,9 +22,8 @@ function Map() {
 			axiosWithAuth()
 				.get("https://cs28mud.herokuapp.com/api/adv/rooms/")
 				.then(res => {
-					const json = res.data.rooms
-					const object = JSON.parse(json)
-					setRooms(object)
+					const rooms = res.data.grid
+					setRooms(rooms)
 				})
 				.catch(err => {
 					console.log(err)
@@ -34,33 +37,53 @@ function Map() {
 		}
 	}, [drawRooms]);
 
+	useEventListener('keydown', handler)
+    function handler({ key }) {
+        let move = new Controls(key)
+        // axios call to move rooms
+        axiosWithAuth().post('/adv/move/', {"direction": `${move.dir}`})
+        .then(res => {
+            if(res.data.title !== user.title){
+                setUser({
+                    ...user,
+                    title: res.data.title,
+                    description: res.data.description,
+                    error_msg: ''
+                })
+                setPlayers(res.data.players)
+                drawRooms(rooms)
+            }else{
+                setUser({
+                    ...user,
+                    error_msg: 'You are blocked from moving that direction'
+                })
+            }
+        })
+        .catch(err => console.log(err))
+    }
+
 	function drawRooms(rooms) {
 		ctx = canvasRef.current.getContext('2d');
 		ctx.clearRect(0, 0, 400, 400)
 		let canvas_width = ctx.canvas.clientWidth
 		let canvas_height = ctx.canvas.clientHeight
-		let start_x = (canvas_width) / 2 - 40
-		let start_y = (canvas_height / 2) - 40
 
 		console.log(rooms)
 
 		rooms.map(room => {
-			let roomFields = room.fields
-			console.log('room', room)
-			let r = new Room(room.pk, 
-					roomFields.title,
-					roomFields.description, 
-					roomFields.n_to, 
-					roomFields.s_to, 
-					roomFields.e_to, 
-					roomFields.w_to,
-					start_x, start_y
+			let r = new Room(room.id, 
+					room.title,
+					room.description, 
+					room.n_to, 
+					room.s_to, 
+					room.e_to, 
+					room.w_to,
+					room.x, room.y
 			)
-			start_x += 42
-			start_y += 42
 			return r.draw(ctx, user.title)
 		})
 	}
+
 	// function gameLoop(timestamp) {
 	// 	let deltaTime = timestamp - lastTime;
 	// 	lastTime = timestamp

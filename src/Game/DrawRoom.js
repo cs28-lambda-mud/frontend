@@ -12,8 +12,8 @@ class Room {
 		this.e_to = east
 		this.w_to = west
 
-		this.x = x
-		this.y = y
+		this.x = x * this.width * 1.25
+		this.y = y * this.height * 1.25
 	}
 
 	draw(ctx, current_room) {

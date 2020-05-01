@@ -23,7 +23,7 @@ export default function Login() {
     const handleSubmit = () => {
         console.log('clicked')
 
-        axios.post('https://lambda-mud-test.herokuapp.com/api/login/', changes)
+        axios.post('https://cs28mud.herokuapp.com/api/login/', changes)
         .then(res => {
             localStorage.setItem('token', res.data.key)
             setIsSubmitting('Success')

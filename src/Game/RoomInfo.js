@@ -15,7 +15,7 @@ export default function RoomInfo() {
         if (info === false) {
             setInfo(true)  
             axiosWithAuth()
-                .get('https://cs28mud.herokuapp.com/api/adv/init')
+                .get('/adv/init/')
                 .then(res => {
                     setUser(
                         {
@@ -23,8 +23,8 @@ export default function RoomInfo() {
                             name: res.data.name, 
                             title: res.data.title, 
                             description: res.data.description, 
-                            room_id: res.data.room_id}
-                        )
+                        }
+                    )
                 setPlayers(res.data.players)
                 console.log(res)
             })
