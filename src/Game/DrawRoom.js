@@ -16,12 +16,11 @@ class Room {
 		this.y = y * this.height * 1.25
 	}
 
-	draw(ctx, current_room) {
+	draw(ctx, is_current) {
 		ctx.fillStyle = 'green';
-		let isCurrentRoom = this.id === current_room ? true : false
 		ctx.fillRect(this.x, this.y, this.width, this.height)
 
-		if (isCurrentRoom) {
+		if (is_current) {
 			ctx.fillStyle = 'blue';
 			ctx.fillRect(this.x, this.y, this.width, this.height)
 		}

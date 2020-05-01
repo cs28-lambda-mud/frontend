@@ -15,6 +15,7 @@ function Map() {
 	const { players, setPlayers } = useContext(PlayerContext)
 	let canvasRef = useRef(null)
 	let ctx;
+	let isCurrent;
 
 	useEffect(() => {
 		if ( rooms == null ) {
@@ -36,7 +37,12 @@ function Map() {
 		}
 	}, [drawRooms, handler, user, rooms, setRooms]);
 
-	useEventListener('keydown', handler)
+	// useEventListener('keydown', handler)
+
+	useEffect(() => {
+		window.addEventListener("keydown", handler)
+		return ( () => { return window.removeEventListener("keydown", handler) })
+	}, [handler])
 
     function handler({ key }) {
         let move = new Controls(key)
@@ -66,7 +72,7 @@ function Map() {
     }
 
 	function drawRooms(rooms) {
-		console.log("redraw")
+
 		ctx = canvasRef.current.getContext('2d');
 		ctx.clearRect(0, 0, 400, 400)
 		let canvas_width = ctx.canvas.clientWidth
@@ -74,7 +80,7 @@ function Map() {
 
 		console.log(rooms)
 
-		rooms.map(room => {
+		rooms.forEach(room => {
 			let r = new Room(room.id, 
 					room.title,
 					room.description, 
@@ -84,7 +90,8 @@ function Map() {
 					room.w_to,
 					room.x, room.y
 			)
-			return r.draw(ctx, user.room_id)
+			isCurrent = user.room_id === room.id
+			r.draw(ctx, isCurrent)
 		})
 	}
 
