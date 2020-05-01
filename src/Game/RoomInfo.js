@@ -17,12 +17,14 @@ export default function RoomInfo() {
             axiosWithAuth()
                 .get('/adv/init/')
                 .then(res => {
+                    console.log(res.data)
                     setUser(
                         {
                             ...user, 
                             name: res.data.name, 
                             title: res.data.title, 
                             description: res.data.description, 
+                            room_id: res.data.room_id
                         }
                     )
                 setPlayers(res.data.players)

@@ -35,33 +35,35 @@ function Map() {
 		if ( rooms != null ) {
 			drawRooms(rooms)
 		}
-	}, [drawRooms]);
+	}, [drawRooms, handler]);
 
 	useEventListener('keydown', handler)
-	
+
     function handler({ key }) {
         let move = new Controls(key)
-        console.log(move)
-        // axios call to move rooms
-        // axiosWithAuth().post('/adv/move/', {"direction": `${move.dir}`})
-        // .then(res => {
-        //     if(res.data.title !== user.title){
-        //         setUser({
-        //             ...user,
-        //             title: res.data.title,
-        //             description: res.data.description,
-        //             error_msg: ''
-        //         })
-        //         setPlayers(res.data.players)
-        //         drawRooms(rooms)
-        //     }else{
-        //         setUser({
-        //             ...user,
-        //             error_msg: 'You are blocked from moving that direction'
-        //         })
-        //     }
-        // })
-        // .catch(err => console.log(err))
+        //console.log(move)
+        //axios call to move rooms
+        axiosWithAuth().post('/adv/move/', {"direction": `${move.dir}`})
+        .then(res => {
+        	console.log("direction", res.data)
+            if(res.data.title !== user.title){
+                setUser({
+                    ...user,
+                    title: res.data.title,
+                    description: res.data.description,
+                    room_id: res.data.room_id
+                    error_msg: ''
+                })
+                setPlayers(res.data.players)
+                drawRooms(rooms)
+            }else{
+                setUser({
+                    ...user,
+                    error_msg: 'You are blocked from moving that direction'
+                })
+            }
+        })
+        .catch(err => console.log(err))
     }
 
 	function drawRooms(rooms) {
@@ -82,7 +84,7 @@ function Map() {
 					room.w_to,
 					room.x, room.y
 			)
-			return r.draw(ctx, user.title)
+			return r.draw(ctx, user.room_id)
 		})
 	}
 
