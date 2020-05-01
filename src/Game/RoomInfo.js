@@ -40,9 +40,9 @@ export default function RoomInfo() {
 
     return (
         <div>
-            {info === true ? <div><h1>User: {user.name}</h1>
-            <h1>Room: {user.title}</h1>
-            <h1>Description: {user.description}</h1>
+            {info === true ? <div><h1 style={{ background: "rgba(225,225, 225, 0.9)"}}>User: {user.name}</h1>
+            <h1 style={{ background: "rgba(225,225, 225, 0.9)"}}>Room: {user.title}</h1>
+            <h1 style={{ background: "rgba(225,225, 225, 0.9)"}}>Description: {user.description}</h1>
             </div> : <h1>'UNKNOWN'</h1>}
         </div>
     )

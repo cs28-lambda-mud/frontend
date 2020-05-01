@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from "react";
 import { axiosWithAuth } from "../Components/Utils/AxiosWithAuth";
 import Room from "./DrawRoom";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import { UserContext } from "../Components/Contexts/UserContext";
 import { PlayerContext } from "../Components/Contexts/PlayerContext";
 import '../index.css';
@@ -10,7 +10,6 @@ import Controls from "./Controls";
 
 function Map() {
 	const [currentRoom, setCurrentRoom] = useState(null)
-	const [isFetching, setIsFetching] = useState(null)
 	const [rooms, setRooms] = useState(null)
 	const { user, setUser } = useContext(UserContext)
 	const { players, setPlayers } = useContext(PlayerContext)
@@ -35,7 +34,7 @@ function Map() {
 		if ( rooms != null ) {
 			drawRooms(rooms)
 		}
-	}, [drawRooms, handler]);
+	}, [drawRooms, handler, user, rooms, setRooms]);
 
 	useEventListener('keydown', handler)
 
@@ -46,12 +45,12 @@ function Map() {
         axiosWithAuth().post('/adv/move/', {"direction": `${move.dir}`})
         .then(res => {
         	console.log("direction", res.data)
-            if(res.data.title !== user.title){
+            if(res.data.room_id !== user.room_id){
                 setUser({
                     ...user,
                     title: res.data.title,
                     description: res.data.description,
-                    room_id: res.data.room_id
+                    room_id: res.data.room_id,
                     error_msg: ''
                 })
                 setPlayers(res.data.players)
@@ -67,6 +66,7 @@ function Map() {
     }
 
 	function drawRooms(rooms) {
+		console.log("redraw")
 		ctx = canvasRef.current.getContext('2d');
 		ctx.clearRect(0, 0, 400, 400)
 		let canvas_width = ctx.canvas.clientWidth
