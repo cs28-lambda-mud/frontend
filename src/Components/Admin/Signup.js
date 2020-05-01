@@ -25,10 +25,10 @@ export default function Signup() {
         .then(res => {
             localStorage.setItem('token', res.data.key)
             setSubmitting('Success')
-            history.push('/')
+            history.push('/play')
         })
         .catch(err => {
-            console.log(err);
+            console.log(err.response.statusText);
             setSubmitting(`${err}`)
         })
     }
@@ -43,7 +43,7 @@ export default function Signup() {
                 <form style={{display: 'flex', flexDirection: 'column'}}>
                     <label > Username
                     <input
-                        style={{marginLeft: '2.4rem'}}
+                        style={{marginLeft: '2.8rem'}}
                         type='username'
                         name='username'
                         value={update.username}

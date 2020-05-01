@@ -53,7 +53,7 @@ export default function Login() {
                     </label>
                     <label> Password
                     <input
-                        style={{marginLeft: '30px'}}
+                        style={{marginLeft: '23px'}}
                         type='password'
                         name='password'
                         value={changes.password}
